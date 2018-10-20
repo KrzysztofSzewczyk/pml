@@ -1,0 +1,31 @@
+
+PML Reference
+
+The only source file extension ".pml". Interpreter enforces this to avoid
+confusion with backup files.
+
+The only data type is the pointer. Every pointer points to a character, but it shall be
+referred to as the pointer's 'reverse'. These pointers are kept on a LIFO data structure.
+
+The position starts at the first reverse of the program. After executing instruction at
+the position, the position is incremented unless instructions specifies otherwise.
+Virtual Machine uses von Neumann architecture.
+
+Program may end only if it reaches the point exactly after the last position, with
+queue in its original state.
+
+$ takes the position as a pointer and adds it to stack.
+: pulls a pointer from stack and sets the current position to it.
+< pulls two pointers from stack and replaces the lower one.
+> pulls two pointers from stack and replaces the higher one.
+; pulls three pointers from stack and replaces the third after adding the second subtracted from the first.
++ pulls two pointers from stack and hides a datum from the source in the reverse of the second pointer, unless the source is dry, in which case the position becomes the first pointer.
+- dumps the reverse of a pointer pulled from stack in the sink.
+@ pulls three pointers from stack, and starting at the second searches for the reverse of the third, incrementing, and ending either at the first or when the reverse of the third is found. It then adds the resulting pointer to stack.
+= pulls two pointers from stack, and replaces the reverse of the first with the reverse of the second.
+* pulls a pointer from stack and replaces it twice.
+/ pulls two pointers from stack and replaces the first and second, in that order.
+\ pulls three pointers from stack and replaces the first, third, and second, in that order.
+! pulls a pointer and shreds it.
+
+Any instruction not listed here is skipped.
