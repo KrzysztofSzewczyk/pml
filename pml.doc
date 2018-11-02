@@ -1,8 +1,7 @@
 
 PML Reference
 
-The only source file extension ".pml". Interpreter enforces this to avoid
-confusion with backup files.
+The only source file extension ".pml".
 
 The only data type is the pointer. Every pointer points to a character, but it shall be
 referred to as the pointer's 'reverse'. These pointers are kept on a LIFO data structure.
